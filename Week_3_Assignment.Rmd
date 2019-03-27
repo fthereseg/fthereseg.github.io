@@ -1,0 +1,30 @@
+---
+title: "R Markdown Presentation & Plotly Assignment (Week 3)"
+author: "Faylene Gilles"
+date: '27th March 2019'
+output: ioslides_presentation
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## Course Work
+
+The task is to create a web page presentation using R Markdown that features a plot created with Plotly. This presentation is hosted on GitHub Pages.
+
+On the following plot we can explore relationship between mammals sleep cycle (hours) and their brain weight (kg). Respective mammals names are presented hovering the plot.  
+
+## Mammals Sleep Cycle and Brain Weight
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+library(plotly)
+sleep_data <- as.data.frame(msleep)
+p <- plot_ly(sleep_data, x = ~sleep_cycle, y = ~brainwt, type = 'scatter', text = ~name,
+             marker = list(size = 10, color = "darkgreen")) %>%
+        layout(title = 'Mammals Sleep Cycle and Brain Weight',
+               xaxis = list(title = 'Sleep Cycle (hours)'),
+               yaxis = list(title = 'Brain Weight (kg)'))
+p
+```
+
